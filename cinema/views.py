@@ -13,8 +13,8 @@ from cinema.serializers import (
 
 
 class MovieViewSet(viewsets.ModelViewSet):
-   queryset = Movie.objects.all()
-   serializer_class = MovieSerializer
+queryset = Movie.objects.all()
+serializer_class = MovieSerializer
 
 
 class GenreList(APIView):
