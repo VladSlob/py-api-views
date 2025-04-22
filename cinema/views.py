@@ -12,7 +12,6 @@ from cinema.serializers import (
 )
 
 
-
 class MovieViewSet(viewsets.ModelViewSet):
    queryset = Movie.objects.all()
    serializer_class = MovieSerializer
