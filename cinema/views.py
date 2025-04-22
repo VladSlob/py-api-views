@@ -107,5 +107,3 @@ class CinemaHallView(viewsets.GenericViewSet,
                      mixins.UpdateModelMixin):
     queryset = CinemaHall.objects.all()
     serializer_class = CinemaHallSerializer
-
-
