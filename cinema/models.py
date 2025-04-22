@@ -5,15 +5,21 @@ class Actor(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ["first_name", "last_name"]
+
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return f"{self.first_name} {self.last_name}"
 
 
 class Genre(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
+
+    class Meta:
+        ordering = ["name"]
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class CinemaHall(models.Model):
@@ -21,16 +27,22 @@ class CinemaHall(models.Model):
     rows = models.IntegerField()
     seats_in_row = models.IntegerField()
 
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class Movie(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    actors = models.ManyToManyField(Actor, related_name="actors")
-    genres = models.ManyToManyField(Genre, related_name="genres")
+    actors = models.ManyToManyField(Actor, related_name="movies")
+    genres = models.ManyToManyField(Genre, related_name="movies")
     duration = models.IntegerField()
+
+    class Meta:
+        ordering = ["title"]
 
     def __str__(self):
         return self.title
